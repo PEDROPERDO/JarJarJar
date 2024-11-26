@@ -2,7 +2,8 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	// "log"
+	"log"
+	"SimpleGolang/utilities"
 )
 
 func MainFile(C *gin.Context) {
@@ -12,7 +13,11 @@ func MainFile(C *gin.Context) {
 
 func GetAllProduct(C *gin.Context) {
 	// Get All Product
-	C.JSON(200, gin.H{"result": "Hallo ! Our Products !"})
+	result, err := utilities.OpenJSON("productfile.json")
+	if err != nil {
+		log.Fatalf("Fail : %v", err)
+	}
+	C.JSON(200, result)
 }
 
 func GetProductID(C *gin.Context) {
