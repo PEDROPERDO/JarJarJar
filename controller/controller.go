@@ -13,7 +13,7 @@ func MainFile(C *gin.Context) {
 
 func GetAllProduct(C *gin.Context) {
 	// Get All Product
-	result, err := utilities.OpenJSON("productfile.json")
+	result, err := utilities.OpenJSON("product.json")
 	if err != nil {
 		log.Fatalf("Fail : %v", err)
 	}
@@ -23,7 +23,7 @@ func GetAllProduct(C *gin.Context) {
 func GetProductID(C *gin.Context) {
 	// Get Product ID
 	PID := C.Param("ProductID")
-	allresult, err := utilities.OpenJSON("productfile.json")
+	allresult, err := utilities.OpenJSON("product.json")
 	if err != nil {
 		log.Fatalf("Fail : %v", err)
 	}
