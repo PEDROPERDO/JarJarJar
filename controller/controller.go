@@ -21,7 +21,17 @@ func GetAllProduct(C *gin.Context) {
 }
 
 func GetProductID(C *gin.Context) {
-	// Get All Product
+	// Get Product ID
 	PID := C.Param("ProductID")
-	C.JSON(200, gin.H{"result": PID})
+	allresult, err := utilities.OpenJSON("productfile.json")
+	if err != nil {
+		log.Fatalf("Fail : %v", err)
+	}
+	for _, result := range allresult {
+		if result.ProductID == PID {
+			C.JSON(200, result)
+			return
+		}
+	}
+	C.JSON(404, gin.H{"result": "Product Unavailable !"})
 }
