@@ -2,6 +2,7 @@ package main
 
 import (
 	"SimpleGolang/router"
+
 	"github.com/gin-gonic/gin"
 )
 
